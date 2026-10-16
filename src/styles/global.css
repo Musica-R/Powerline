@@ -1,0 +1,615 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --red: #d7261e;
+  --red-d: #b11c15;
+  --black: #111214;
+  --ink: #2a2c30;
+  --grey: #f4f5f7;
+  --line: #e4e6ea;
+  --w: 1180px
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+  line-height: 1.65;
+  background: #fff;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative
+}
+
+img {
+  max-width: 100%;
+  display: block
+}
+
+a {
+  color: inherit;
+  text-decoration: none
+}
+
+ul {
+  list-style: none
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--black);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -.5px
+}
+
+button,
+input,
+textarea {
+  font-family: inherit
+}
+
+.container {
+  width: 100%;
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 0 24px
+}
+
+.center {
+  text-align: center;
+  margin-top: 36px
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: #fff;
+  padding: 14px 28px;
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: .25s
+}
+
+.btn:hover {
+  background: var(--red-d);
+  border-color: var(--red-d);
+  transform: translateY(-2px)
+}
+
+.btn.ghost {
+  background: transparent;
+  border-color: #fff
+}
+
+.btn.ghost:hover {
+  background: #fff;
+  color: var(--black)
+}
+
+.btn.light {
+  background: #fff;
+  color: var(--red);
+  border-color: #fff
+}
+
+.btn.sm {
+  padding: 9px 18px;
+  font-size: .92rem
+}
+
+/* Scroll reveal: items arrive one by one via transition-delay */
+.reveal {
+  opacity: 0;
+  transition: opacity .7s ease, transform .7s ease
+}
+
+.reveal.up {
+  transform: translateY(34px)
+}
+
+.reveal.left {
+  transform: translateX(-50px)
+}
+
+.reveal.right {
+  transform: translateX(50px)
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none
+}
+
+.words span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease
+}
+
+.words.in span {
+  opacity: 1;
+  transform: none
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+  .reveal,
+  .words span {
+    opacity: 1;
+    transform: none;
+    transition: none
+  }
+}
+
+.img-fallback {
+  background: linear-gradient(135deg, #111214, #d7261e);
+  min-height: 200px;
+  width: 100%;
+  height: 100%
+}
+
+/* Navbar */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .06)
+}
+
+.topbar {
+  background: var(--black);
+  color: #ddd;
+  font-size: .82rem;
+  transition: margin .3s
+}
+
+.topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 6px;
+  padding-bottom: 6px
+}
+
+.topbar span {
+  display: flex;
+  align-items: center;
+  gap: 6px
+}
+
+.nav.solid .topbar {
+  margin-top: -34px
+}
+
+.nav-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.brand img {
+  height: 52px;
+  width: auto
+}
+
+.brand b {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  color: var(--black);
+  line-height: 1.1
+}
+
+.brand small {
+  font-size: .7rem;
+  letter-spacing: 3px;
+  color: var(--red)
+}
+
+.nav nav {
+  display: flex;
+  align-items: center;
+  gap: 26px
+}
+
+.nav nav a:not(.btn) {
+  font-weight: 600;
+  font-size: .95rem;
+  position: relative;
+  padding: 4px 0
+}
+
+.nav nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background: var(--red);
+  transition: .3s
+}
+
+.nav nav a.active::after,
+.nav nav a:hover::after {
+  width: 100%
+}
+
+.nav nav a.active {
+  color: var(--red)
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: 0;
+  color: var(--black);
+  cursor: pointer
+}
+
+/* Footer */
+.footer {
+  background: var(--black);
+  color: #b9bcc2
+}
+
+.foot-cta {
+  background: linear-gradient(110deg, var(--red), #7d100b)
+}
+
+.foot-cta-in {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding-top: 38px;
+  padding-bottom: 38px
+}
+
+.foot-cta h3 {
+  color: #fff;
+  font-size: 1.7rem
+}
+
+.foot-cta p {
+  color: #ffd9d6;
+  margin-top: 4px
+}
+
+.foot-cta-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap
+}
+
+.btn.wa {
+  background: #25d366;
+  border-color: #25d366;
+  color: #fff
+}
+
+.btn.wa:hover {
+  background: #1da851;
+  border-color: #1da851
+}
+
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .9fr 1.1fr 1.5fr;
+  gap: 40px;
+  padding-top: 64px
+}
+
+.foot-logo {
+  height: 78px;
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-bottom: 16px
+}
+
+.foot-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px
+}
+
+.foot-social a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #1d1f23;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: .25s;
+  margin: 0
+}
+
+.foot-social a:hover {
+  background: var(--red);
+  transform: translateY(-3px);
+  color: #fff
+}
+
+.footer h4 {
+  color: #fff;
+  margin-bottom: 18px;
+  position: relative;
+  padding-bottom: 10px
+}
+
+.footer h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 3px;
+  background: var(--red)
+}
+
+.footer a,
+.footer span {
+  display: flex;
+  /* align-items: flex-start; */
+  gap: 8px;
+  margin-bottom: 11px;
+  font-size: .94rem;
+  transition: .2s
+}
+
+.footer a svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--red)
+}
+
+.footer a:hover {
+  color: #fff;
+  transform: translateX(4px)
+}
+
+.footer span svg {
+  color: var(--red);
+  flex: none;
+  margin-top: 3px
+}
+
+.copy {
+  margin-top: 48px;
+  padding: 18px 24px;
+  border-top: 1px solid #2a2c30;
+  text-align: center;
+  font-size: .85rem
+}
+
+.floating {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+.floating a {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .28);
+  transition: .25s
+}
+
+.floating a:hover {
+  transform: scale(1.1)
+}
+
+.float-wa {
+  background: #25d366;
+  animation: pulse 2.2s infinite
+}
+
+.float-call {
+  background: var(--red)
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, .55)
+  }
+
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0)
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0)
+  }
+}
+
+@media (max-width:1024px) {
+  .container {
+    padding: 0 20px
+  }
+
+  .nav nav {
+    gap: 18px
+  }
+
+  .foot-grid {
+    grid-template-columns: 1fr 1fr
+  }
+}
+
+@media (max-width:768px) {
+  .foot-cta-in {
+    flex-direction: column;
+    align-items: flex-start
+  }
+
+  .burger {
+    display: block
+  }
+
+  /* Drawer hidden with transform + visibility (not right:-100%) so it never adds page width */
+  .nav nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(78vw, 320px);
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px 28px;
+    gap: 22px;
+    box-shadow: none;
+    transform: translateX(105%);
+    visibility: hidden;
+    transition: transform .35s ease, visibility .35s, box-shadow .35s
+  }
+
+  .nav nav.open {
+    transform: none;
+    visibility: visible;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, .15)
+  }
+
+  .burger {
+    position: relative;
+    z-index: 60
+  }
+
+  .foot-grid {
+    grid-template-columns: 1fr
+  }
+}
+
+@media (max-width:520px) {
+  .floating a {
+    width: 48px;
+    height: 48px
+  }
+
+  .floating {
+    right: 12px;
+    bottom: 12px
+  }
+
+  .foot-cta h3 {
+    font-size: 1.35rem
+  }
+
+  .hide-sm {
+    display: none
+  }
+
+  .brand img {
+    height: 42px
+  }
+
+  .brand b {
+    font-size: .92rem
+  }
+
+  .nav-in {
+    height: 64px
+  }
+
+  .topbar .container {
+    justify-content: center
+  }
+}
+
+@media (max-width:320px) {
+  .container {
+    padding: 0 14px
+  }
+
+  .brand b {
+    display: none
+  }
+
+  .btn {
+    padding: 12px 20px
+  }
+}
+
+/* ===== Horizontal overflow fixes ===== */
+
+/* clip sideways overflow without creating a scroll container */
+main,
+.footer {
+  overflow-x: hidden;
+  overflow-x: clip
+}
+
+/* off-screen side reveals must not push the page wider on mobile */
+@media (max-width:768px) {
+
+  .reveal.left,
+  .reveal.right {
+    transform: translateY(34px)
+  }
+
+  .reveal.in {
+    transform: none
+  }
+}
+
+/* grid/flex children can't shrink below content width unless told to */
+.split>*,
+.svc>*,
+.vm>*,
+.contact>*,
+.mp>*,
+.spot>*,
+.faq-wrap>*,
+.fb-grid>*,
+.grid3>*,
+.grid4>* {
+  min-width: 0
+}
+
+.topbar .container {
+  flex-wrap: wrap;
+  gap: 4px 16px
+}
