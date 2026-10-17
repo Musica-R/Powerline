@@ -94,8 +94,9 @@ export default function Navbar() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
         >
-          {open ? <Close /> : <Menu />}
+          {open ? <Close size={30} /> : <Menu size={30} />}
         </button>
+
       </div>
 
       <div className={`nav-overlay${open ? ' show' : ''}`} onClick={close} aria-hidden="true" />

@@ -71,16 +71,16 @@ main,
 }
 
 /* grid/flex children can't shrink below content width unless told to */
-.split > *,
-.svc > *,
-.vm > *,
-.contact > *,
-.mp > *,
-.spot > *,
-.faq-wrap > *,
-.fb-grid > *,
-.grid3 > *,
-.grid4 > * {
+.split>*,
+.svc>*,
+.vm>*,
+.contact>*,
+.mp>*,
+.spot>*,
+.faq-wrap>*,
+.fb-grid>*,
+.grid3>*,
+.grid4>* {
   min-width: 0;
 }
 
@@ -194,6 +194,7 @@ main,
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .reveal,
   .words span {
     opacity: 1;
@@ -493,6 +494,41 @@ html.menu-open .to-top {
   background: var(--red);
 }
 
+/* ===== Scroll to top ===== */
+.to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 160px;
+  /* sits above the call + WhatsApp buttons */
+  z-index: 70;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--black);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease, visibility 0s linear .3s, background .25s;
+}
+
+.to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .3s ease, transform .3s ease, visibility 0s, background .25s;
+}
+
+.to-top:hover {
+  background: var(--red);
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, .55);
@@ -524,6 +560,7 @@ html.menu-open .to-top {
 
 /* ===== Responsive: mobile (drawer menu) ===== */
 @media (max-width: 768px) {
+
   /* side reveals must not push the page wider */
   .reveal.left,
   .reveal.right {
@@ -552,6 +589,14 @@ html.menu-open .to-top {
     display: block;
     position: relative;
     z-index: 60;
+    padding: 8px;
+    margin-right: -8px;
+    line-height: 0;
+  }
+
+  .burger svg {
+    width: 30px;
+    height: 30px;
   }
 
   /* drawer: hidden via transform + visibility so it never adds page width */
@@ -639,6 +684,11 @@ html.menu-open .to-top {
   .topbar .container {
     justify-content: center;
   }
+
+  .burger svg {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 @media (max-width: 320px) {
@@ -653,4 +703,5 @@ html.menu-open .to-top {
   .btn {
     padding: 12px 20px;
   }
+
 }

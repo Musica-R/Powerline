@@ -8,9 +8,9 @@ import Faq from '../components/Faq';
 import Img from '../components/Img';
 import BrandCarousel from '../components/BrandCarousel';
 import Feedback from '../components/Feedback';
-import { quick, stats, services, vision,  assets, company } from '../data/content';
+import { quick, stats, services, vision, assets, company } from '../data/content';
 import ProjectsCarousel from '../components/ProjectsCarousel';
-import '../styles/animations.css'; 
+import '../styles/animations.css';
 
 export default function Home() {
   const [showTop, setShowTop] = useState(false);
@@ -55,7 +55,11 @@ export default function Home() {
     <>
       <div id="scroll-progress" aria-hidden="true" />
 
-      <section className="hero" style={{ backgroundImage: `linear-gradient(100deg,rgba(8,8,8,.93) 35%,rgba(8,8,8,.45)),url("/assets/form1.png")` }}>
+      <section
+        className="hero"
+        style={{ backgroundImage: `linear-gradient(100deg,rgba(8,8,8,.93) 35%,rgba(8,8,8,.45)),url("/assets/form1.png")` }}
+      >
+
         <div className="sparks" aria-hidden="true">
           {Array.from({ length: 14 }).map((_, i) => <i key={i} style={{ '--i': i }} />)}
         </div>
@@ -73,9 +77,11 @@ export default function Home() {
       </section>
 
       <section className="quick container">
-        {quick.map(([ic, t, d], i) => { const I = Icons[ic]; return (
-          <Reveal key={t} delay={i * 120} className="quick-card"><I size={34} /><h3>{t}</h3><p>{d}</p></Reveal>
-        ); })}
+        {quick.map(([ic, t, d], i) => {
+          const I = Icons[ic]; return (
+            <Reveal key={t} delay={i * 120} className="quick-card"><I size={34} /><h3>{t}</h3><p>{d}</p></Reveal>
+          );
+        })}
       </section>
 
       <section id="about" className="section container split">
@@ -103,16 +109,20 @@ export default function Home() {
       <section className="section container">
         <SectionTitle center kicker="What We Do" title="Complete Electrical Solutions" text="From design and supply to erection, testing and commissioning." />
         <div className="grid3">
-          {services.map(([ic, t, d, img], i) => { const I = Icons[ic]; return (
-            <Reveal key={t} delay={(i % 3) * 300} className="card"><Img src={img} alt={t} /><div className="card-b"><span className="ic"><I size={26} /></span><h3>{t}</h3><p>{d}</p></div></Reveal>
-          ); })}
+          {services.map(([ic, t, d, img], i) => {
+            const I = Icons[ic]; return (
+              <Reveal key={t} delay={(i % 3) * 300} className="card"><Img src={img} alt={t} /><div className="card-b"><span className="ic"><I size={26} /></span><h3>{t}</h3><p>{d}</p></div></Reveal>
+            );
+          })}
         </div>
       </section>
 
       <section className="section dark"><div className="container vm">
-        {vision.map(([ic, t, d], i) => { const I = Icons[ic]; return (
-          <Reveal key={t} variant={i ? 'right' : 'left'} className="vm-card"><I size={40} /><h3>{t}</h3><p>{d}</p></Reveal>
-        ); })}
+        {vision.map(([ic, t, d], i) => {
+          const I = Icons[ic]; return (
+            <Reveal key={t} variant={i ? 'right' : 'left'} className="vm-card"><I size={40} /><h3>{t}</h3><p>{d}</p></Reveal>
+          );
+        })}
       </div></section>
 
       <section className="section container split rev">
@@ -146,7 +156,7 @@ export default function Home() {
 
       <section className="cta"><div className="container">
         <Words text="Planning an electrical project? Talk to our engineers." />
-        <Reveal delay={300}><div className="foot-cta-btns" style={{justifyContent:"center"}}><Link to="/contact" className="btn light">Contact Us <Icons.Arrow size={18} /></Link><a className="btn wa" href={`tel:${company.tel}`}><Icons.Mobile size={18} /> {company.phone}</a></div></Reveal>
+        <Reveal delay={300}><div className="foot-cta-btns" style={{ justifyContent: "center" }}><Link to="/contact" className="btn light">Contact Us <Icons.Arrow size={18} /></Link><a className="btn wa" href={`tel:${company.tel}`}><Icons.Mobile size={18} /> {company.phone}</a></div></Reveal>
       </div></section>
     </>
   );
