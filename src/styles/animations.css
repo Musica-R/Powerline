@@ -1,0 +1,346 @@
+/* ===== animations.css — add AFTER your main stylesheet ===== */
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 9999;
+  background: linear-gradient(90deg, var(--red), #ff8a84);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  pointer-events: none
+}
+
+/* Hero: slow zoom + parallax + glowing sparks */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-position: center calc(50% + var(--py, 0px));
+  animation: heroZoom 24s ease-in-out infinite alternate
+}
+
+@keyframes heroZoom {
+  from { background-size: 105% auto }
+  to { background-size: 125% auto }
+}
+
+@supports (background-size: cover) {
+  .hero { background-size: cover }
+}
+
+.hero-in { position: relative; z-index: 2 }
+
+.sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden
+}
+
+.sparks i {
+  position: absolute;
+  bottom: -20px;
+  left: calc(var(--i) * 7.3%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ff6a5f;
+  box-shadow: 0 0 10px 3px rgba(255, 90, 80, .75);
+  opacity: 0;
+  animation: spark calc(6s + (var(--i) * .55s)) linear infinite;
+  animation-delay: calc(var(--i) * -.9s)
+}
+
+.sparks i:nth-child(3n) { width: 2px; height: 14px; border-radius: 2px }
+.sparks i:nth-child(4n) { background: #ffd27a; box-shadow: 0 0 10px 3px rgba(255, 200, 100, .7) }
+
+@keyframes spark {
+  0% { transform: translate(0, 0) scale(.6); opacity: 0 }
+  12% { opacity: .95 }
+  50% { transform: translate(calc((var(--i) - 7) * 6px), -50vh) scale(1) }
+  100% { transform: translate(calc((var(--i) - 7) * -9px), -105vh) scale(.4); opacity: 0 }
+}
+
+/* Scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  margin-left: -13px;
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, .7);
+  border-radius: 14px;
+  z-index: 3
+}
+
+.scroll-cue span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--red);
+  animation: wheel 1.6s ease-in-out infinite
+}
+
+@keyframes wheel {
+  0% { transform: translateY(0); opacity: 1 }
+  100% { transform: translateY(16px); opacity: 0 }
+}
+
+/* Buttons: shine sweep on hover, pulse on main CTA */
+.btn { position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s, background .25s, color .25s }
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+  transform: skewX(-20deg)
+}
+
+.btn:hover { transform: translateY(-3px) }
+.btn:hover::after { animation: shine .7s }
+
+@keyframes shine { to { left: 130% } }
+
+.btn svg { transition: transform .25s }
+.btn:hover svg { transform: translateX(5px) }
+
+.btn.pulse { animation: ctaPulse 2.4s infinite }
+
+@keyframes ctaPulse {
+  0% { box-shadow: 0 0 0 0 rgba(215, 38, 30, .55) }
+  70% { box-shadow: 0 0 0 16px rgba(215, 38, 30, 0) }
+  100% { box-shadow: 0 0 0 0 rgba(215, 38, 30, 0) }
+}
+
+.btn.wa { animation: waPulse 2.8s infinite 1s }
+
+@keyframes waPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, .5) }
+  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0) }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0) }
+}
+
+/* Section titles: current line that draws itself */
+.sec-title { position: relative; padding-bottom: 18px }
+
+.sec-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--red) 0 40%, #ffd27a 50%, var(--red) 60% 100%);
+  background-size: 200% 100%;
+  animation: current 2.6s linear infinite
+}
+
+.sec-title.center::after { left: 50%; margin-left: -35px }
+
+@keyframes current { to { background-position: -200% 0 } }
+
+/* Quick cards: icon reacts on hover */
+.quick-card { transition: transform .3s, box-shadow .3s }
+.quick-card:hover { transform: translateY(-8px) !important; box-shadow: 0 22px 44px rgba(0, 0, 0, .18) }
+.quick-card svg { transition: transform .4s }
+.quick-card:hover svg { transform: scale(1.2) rotate(-8deg) }
+
+/* About image: floating badge + zoom */
+.split-img img { transition: transform 1.2s ease }
+.split-img:hover img { transform: scale(1.06) }
+.badge { animation: floatY 3.2s ease-in-out infinite }
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-8px) }
+}
+
+/* Tick marks pop in on hover */
+.ticks li svg { transition: transform .3s }
+.ticks li:hover svg { transform: scale(1.35) rotate(10deg) }
+
+/* Stats: moving gradient + subtle number lift */
+.stats {
+  background: linear-gradient(120deg, var(--red), #8f130e, #c4201a, #8f130e);
+  background-size: 300% 300%;
+  animation: statsFlow 10s ease infinite
+}
+
+@keyframes statsFlow {
+  0%, 100% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+}
+
+.stat { transition: transform .3s }
+.stat:hover { transform: scale(1.08) }
+
+/* Marquee strip */
+.marquee { border-top: 3px solid var(--red) }
+.marquee:hover .track { animation-play-state: paused }
+
+/* Service cards: image zoom, icon spin, red edge, mouse glow */
+.card { position: relative }
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(215, 38, 30, .13), transparent 70%)
+}
+
+.card:hover::before { opacity: 1 }
+
+.card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .45s ease;
+  z-index: 2
+}
+
+.card:hover::after { transform: scaleX(1) }
+
+.card img { transition: transform .7s ease }
+.card:hover img { transform: scale(1.1) }
+.card-b { position: relative; z-index: 2 }
+
+.card .ic { transition: transform .6s, box-shadow .3s }
+.card:hover .ic { transform: rotateY(360deg) scale(1.1); box-shadow: 0 0 0 8px rgba(215, 38, 30, .15) }
+
+/* Vision / mission: glowing edge */
+.vm-card { transition: transform .3s, box-shadow .3s, border-color .3s }
+.vm-card:hover { transform: translateY(-6px) !important; border-left-color: #ff6a5f; box-shadow: 0 0 34px rgba(215, 38, 30, .35) }
+.vm-card svg { animation: bolt 2.8s ease-in-out infinite }
+
+@keyframes bolt {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(255, 90, 80, 0)); transform: scale(1) }
+  50% { filter: drop-shadow(0 0 10px rgba(255, 90, 80, .9)); transform: scale(1.12) }
+}
+
+/* CTA: breathing glow */
+.cta { position: relative; overflow: hidden }
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 620px;
+  height: 620px;
+  margin: -310px 0 0 -310px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(215, 38, 30, .35), transparent 65%);
+  animation: breathe 5s ease-in-out infinite;
+  pointer-events: none
+}
+
+.cta .container { position: relative; z-index: 1 }
+
+@keyframes breathe {
+  0%, 100% { transform: scale(.8); opacity: .6 }
+  50% { transform: scale(1.15); opacity: 1 }
+}
+
+/* Back to top */
+.to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity .3s, transform .3s, visibility .3s, background .25s;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .3)
+}
+
+.to-top svg { transform: rotate(-90deg) }
+.to-top.show { opacity: 1; visibility: visible; transform: translateY(0) }
+.to-top:hover { background: var(--black); transform: translateY(-4px) }
+
+@media (max-width:520px) {
+  .scroll-cue { display: none }
+  .to-top { right: 14px; bottom: 14px }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important
+  }
+}
+
+/* ===== Lottie placements ===== */
+.hero-lottie {
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  width: min(34vw, 420px);
+  margin-top: calc(min(34vw, 420px) / -2);
+  z-index: 2;
+  pointer-events: none;
+  opacity: .95;
+  filter: drop-shadow(0 0 30px rgba(215, 38, 30, .45))
+}
+
+.lottie-line {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  height: 90px
+}
+
+.lottie-line svg { width: 100% !important; height: 100% !important }
+
+.section.dark { position: relative }
+
+.cta-lottie {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 6px
+}
+
+@media (max-width:1024px) {
+  .hero-lottie { width: 260px; margin-top: -130px; right: 2%; opacity: .5 }
+}
+
+@media (max-width:768px) {
+  .hero-lottie { display: none }
+  .lottie-line { height: 60px; margin-bottom: 24px }
+}

@@ -5,7 +5,7 @@ import PageHeader from '../components/PageHeader';
 import Reveal from '../components/Reveal';
 import SectionTitle from '../components/SectionTitle';
 import Img from '../components/Img';
-import { IMG, services, assets, company } from '../data/content';
+import { IMG, services, assets, company, instruments, tools } from '../data/content';
 
 const steps = [
   ['Consult & Survey', 'We understand your load, site and statutory needs.'],
@@ -13,6 +13,43 @@ const steps = [
   ['Supply & Fabricate', 'Approved equipment plus panels from our own fabrication shop.'],
   ['Erect & Commission', 'Installation, testing and energisation within the schedule.'],
 ];
+
+function EquipTable({ icon, title, sub, rows }) {
+  const I = Icons[icon] || Icons.Bolt;
+  return (
+    <Reveal className="tbl-card">
+      <div className="tbl-head">
+        <span className="ic"><I size={22} /></span>
+        <div>
+          <h3>{title}</h3>
+          <small>{sub}</small>
+        </div>
+      </div>
+      <div className="tbl-scroll">
+        <table className="tbl">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Rating / Spec</th>
+              <th>Make</th>
+              <th className="qty">Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(([item, spec, make, qty], i) => (
+              <tr key={item + i}>
+                <td>{item}</td>
+                <td>{spec || <span className="dash">–</span>}</td>
+                <td>{make || <span className="dash">–</span>}</td>
+                <td className="qty"><b>{qty}</b></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Reveal>
+  );
+}
 
 export default function Services() {
   return (
@@ -51,6 +88,19 @@ export default function Services() {
           <a className="btn wa" href={`https://wa.me/${company.wa}`} target="_blank" rel="noreferrer"><Icons.WhatsApp size={18} /> Discuss on WhatsApp</a>
         </Reveal>
       </div></section>
+
+      <section className="section container">
+        <SectionTitle
+          center
+          kicker="Our Equipment"
+          title="Measuring Instruments & Tools"
+          text="Calibrated testing instruments and a full set of tools and machines for site work, erection and commissioning."
+        />
+        <div className="tbl-grid">
+          <EquipTable icon="Gear" title="Measuring Instruments" sub="Testing and measurement" rows={instruments} />
+          <EquipTable icon="Tool" title="Tools & Machines" sub="Erection, fabrication and drafting" rows={tools} />
+        </div>
+      </section>
     </>
   );
 }

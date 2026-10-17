@@ -13,7 +13,7 @@ export default function About() {
     <>
       <PageHeader title="About Us" sub="Experienced electrical contractors, engineers and consultants in Palakkad." img={IMG.factory} />
       <section className="section container split">
-        <Reveal variant="left" className="split-img"><Img src={IMG.work} alt="Electrician at work" /></Reveal>
+        <Reveal variant="left" className="split-img"><Img src="/assets/about.jpg" alt="Electrician at work" /></Reveal>
         <div>
           <SectionTitle kicker="Company Profile" title="Quality And Customer Care Is Our Motto" />
           <Reveal as="p" delay={150}>Powerline Engineers executes industrial and commercial electrification projects, High Voltage and Low Voltage. We also deal in all HT and LT switchgear and control gear: moulded case circuit breakers, switch fuse units, contactors, relays, motor starters, HT and LT cables, cable joint kits, glands, sockets, wires, fuses, wiring and lighting accessories, insulators, lightning arresters and AB switches.</Reveal>

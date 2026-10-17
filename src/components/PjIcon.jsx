@@ -1,34 +1,23 @@
 import React from 'react';
 import {
-  FaLayerGroup,
-  FaIndustry,
-  FaBuilding,
-  FaMapMarkerAlt,
-  FaBolt,
-  FaCogs,
-  FaRupeeSign,
-  FaLightbulb,
-  FaTools,
-  FaShieldAlt,
-  FaNetworkWired,
-  FaArrowRight,
-  FaChevronRight,
+  FaLayerGroup, FaMapMarkerAlt, FaBolt, FaCogs, FaRupeeSign, FaLightbulb,
+  FaTools, FaShieldAlt, FaNetworkWired, FaArrowRight, FaChevronRight,
+  FaHome, FaStore,
 } from 'react-icons/fa';
 import {
-  MdOutlineElectricalServices,
-  MdSettingsInputComponent,
-  MdCable,
-  MdOutlineBatteryChargingFull,
-  MdVerticalAlignBottom,
+  MdOutlineElectricalServices, MdSettingsInputComponent, MdCable,
+  MdOutlineBatteryChargingFull, MdVerticalAlignBottom,
 } from 'react-icons/md';
 import { GiPowerGenerator } from 'react-icons/gi';
-import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
-import { PiHospital } from "react-icons/pi";
+import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
+import { PiHospital } from 'react-icons/pi';
 
 const ICONS = {
   layers: FaLayerGroup,
   factory: HiOutlineBuildingOffice2,
   building: PiHospital,
+  home: FaHome,
+  store: FaStore,
   pin: FaMapMarkerAlt,
   bolt: FaBolt,
   transformer: MdOutlineElectricalServices,
