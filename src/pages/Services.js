@@ -54,7 +54,7 @@ function EquipTable({ icon, title, sub, rows }) {
 export default function Services() {
   return (
     <>
-      <PageHeader title="Our Services" sub="Design, supply, erection, testing and commissioning under one roof." img={IMG.panel} />
+      <PageHeader title="Our Services" sub="Design, supply, erection, testing and commissioning under one roof." img="/assets/newbg2.jpg" />
       <section className="section container">
         <SectionTitle center kicker="What We Do" title="Complete Electrical Solutions" text="Six core services for industrial and commercial clients." />
         <div className="svc-grid">

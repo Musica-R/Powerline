@@ -24,7 +24,6 @@ export default function Footer() {
             <a href={`tel:${company.tel}`} aria-label="Call"><Mobile size={18} /></a>
             <a href={`https://wa.me/${company.wa}`} target="_blank" rel="noreferrer" aria-label="WhatsApp"><WhatsApp size={18} /></a>
             <a href={`mailto:${company.email}`} aria-label="Email"><Mail size={18} /></a>
-            <a href={`https://${company.web}`} target="_blank" rel="noreferrer" aria-label="Website"><Globe size={18} /></a>
           </div>
         </div>
         <div>

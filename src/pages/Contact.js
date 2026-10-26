@@ -12,7 +12,6 @@ export default function Contact() {
     [WhatsApp, 'WhatsApp', 'Chat with us now', `https://wa.me/${company.wa}`],
     [Mail, 'Email', company.email, `mailto:${company.email}`],
     [Pin, 'Address', company.address],
-    [Globe, 'Website', company.web],
   ];
 
   const submit = (e) => {
@@ -37,7 +36,7 @@ export default function Contact() {
       <PageHeader
         title="Contact Us"
         sub={`Speak to ${company.contact} or send your project requirement.`}
-        img={IMG.grid}
+        img="/assets/newbg5.jpg"
       />
       <section className="section container contact">
         <div>

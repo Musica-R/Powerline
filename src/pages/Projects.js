@@ -31,7 +31,7 @@ export default function Projects() {
       <PageHeader
         title="Our Projects"
         sub="Electrical infrastructure delivered with precision, safety and reliability."
-        img={IMG.work}
+        img="/assets/newbg3.jpg"
       />
 
       {/* ===== Stats strip ===== */}

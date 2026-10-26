@@ -7,7 +7,7 @@ import { IMG, team } from '../data/content';
 export default function Team() {
   return (
     <>
-      <PageHeader title="Our Team" sub="Licensed supervisors and engineers with decades of field experience." img={IMG.site} />
+      <PageHeader title="Our Team" sub="Licensed supervisors and engineers with decades of field experience." img="/assets/newbg4.jpg" />
       <section className="section container">
         <div className="grid3">
           {team.map(([n, r, q, d], i) => (

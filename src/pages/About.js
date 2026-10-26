@@ -11,7 +11,7 @@ import { IMG, vision } from '../data/content';
 export default function About() {
   return (
     <>
-      <PageHeader title="About Us" sub="Experienced electrical contractors, engineers and consultants in Palakkad." img={IMG.factory} />
+      <PageHeader title="About Us" sub="Experienced electrical contractors, engineers and consultants in Palakkad." img="/assets/newbg1.jpg" />
       <section className="section container split">
         <Reveal variant="left" className="split-img"><Img src="/assets/about.jpg" alt="Electrician at work" /></Reveal>
         <div>
